@@ -11,7 +11,7 @@ function Navbars() {
     <section >
     <Navbar fixed='top'className='bg-light 'expend='bg'>
     <Container>
-        <Link className='navbar-brand ' to="/"><h2>Online shop</h2></Link>
+        <Link className='navbar-brand ' to="/ecommerce"><h2>Online shop</h2></Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
