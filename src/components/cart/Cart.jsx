@@ -1,5 +1,5 @@
 import Button from 'react-bootstrap/esm/Button';
-import Table from 'react-bootstrap/Table';
+import './cart.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {  ClearCart,  removeFromCart } from '../../feature/cartSlice';
@@ -8,21 +8,25 @@ import {  ClearCart,  removeFromCart } from '../../feature/cartSlice';
   const disptach=useDispatch()
 
 const totalPrice=cart.reduce((acc,product)=>{
-  acc +=product.price
+  acc +=product.price * product.cartQuantity
 return acc
 },0)
   return (
     <>
-<h1 className="pt-5 text-md-center text-sm-center">Welcome to Your Cart</h1>
- 
- <section className='tb'>
-<Table striped bordered hover className='pt=5 '>
+<h1 className="pt-5 text-md-center text-sm-center">Your Cart</h1>
+       <Button
+ variant='warning'
+ onClick={()=> disptach(ClearCart())}
+  className='mx-sm-auto mx-md-auto mb-3 text-center d-flex'>
+    Clear All Products
+    </Button>  
+ <section className='tb '>
+<table    className='pt=5 bordered striped hover'>
       <thead>
         <tr>
         <th>Id</th>
           <th>Title</th>
           <th>Image</th>
-          <th>Description</th> 
            <th>Price</th>
         <th>Qauntity</th>
         <th>Total </th>
@@ -31,29 +35,29 @@ return acc
         </tr>
       </thead>
       <tbody>
-        {cart.map(product =>(  <tr>
+        {cart.map(product =>(  <tr key={product.id}>
           <td>{product.id}</td>
           <td>{product.title}</td>
           <td><img src={product.image} alt={product.name}style={{width:"100px",height:"100px"}}/></td>
-          <td>{product.description}</td>
            <td>{product.price} $</td>
-          <td>{product.quantity} </td>
-        <td>{product.quantity * product.price}</td>
+          <td>{product.cartQuantity} </td>
+        <td>{product.cartQuantity * product.price}</td>
           <td><Button variant='danger'
           onClick={()=> disptach(removeFromCart(product))}
           >Delete</Button></td>
         </tr>       ) )}
       
       </tbody>
-    </Table> 
-        <Button
- variant='warning'
- onClick={()=> disptach(ClearCart())}
-  className='text-md-center text-center mt-3 m-sm-auto mt-5'>
-    Clear All Products
-    </Button>  
-    <h4 className='text-end mx-3'>Total Price : {totalPrice} $</h4>
-    <Link className='nav-link text-md-center text-sm-center' to='/info'><Button variant='success'>Order Now</Button></Link>
+    </table> 
+    <span>
+    <h4 className='text-md-center mx-3 text-sm-center mt-2'>Total Price : {totalPrice } $</h4>
+    
+      <Link className='nav-link text-md-center text-sm-center m-sm-auto m-md-auto'
+      to='/info'>
+      <Button variant='success'>Order Now
+      </Button>
+      </Link>
+    </span> 
     </section> 
 
 

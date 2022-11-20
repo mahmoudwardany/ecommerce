@@ -8,10 +8,13 @@ import { BrowserRouter  } from 'react-router-dom';
 import Footers from './components/footer/Footers';
 import Info from './components/info/Info';
 import Greeting from './components/greeting/Greeting';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <BrowserRouter>
+    <ToastContainer/>
     <Navbars/>
 <Routes>
   

@@ -1,0 +1,28 @@
+table {
+    width: 80%;
+    text-align: center;
+    margin: 10px 0px;
+    border: 2px solid black;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    margin: auto;
+    border-collapse:collapse ;
+}
+table tr:nth-of-type(odd){
+    background-color: #f0f0f0;
+    color: black;
+}
+table th {
+    background-color: rgb(104, 20, 20);
+    color:rgb(255, 255, 255);
+}
+
+th,
+td {
+    padding: 5px;
+    border: 1px solid;
+}
+
+@media (min-width:300px) and (max-width:767px){
+   
+}
